@@ -1,0 +1,29 @@
+server:
+  port: 9091
+  
+spring:
+  application:
+    name: user-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/akpa
+    username: postgres
+    password: postgres
+    hikari:
+      initialization-fail-timeout: 0
+  flyway:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 1
+    baseline-description: baseline_migration
+    sql-migration-prefix: US1_
+    repeatable-sql-migration-prefix: R
+    sql-migration-separator: __
+    sql-migration-suffixes: .sql
+    enabled: true
+ 
+logging:
+ level:
+  com:
+    zaxxer:
+      hikari: INFO
